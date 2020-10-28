@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  client1:
+    build: .
+    restart: unless-stopped
+    environment:
+      SERVER_ADDR: http://localhost:8180
+      HOST: web1
+      PORT: 80
+      SUBDOMAIN: web1
+
+
+  client2:
+    build: .
+    restart: unless-stopped
+    environment:
+      SERVER_ADDR: http://localhost:8180
+      HOST: web2
+      PORT: 80
+      SUBDOMAIN: web2
+
+
+  web1:
+      image: strm/helloworld-http
+  web2:
+      image: strm/helloworld-http
