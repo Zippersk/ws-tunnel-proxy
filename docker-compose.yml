@@ -1,25 +1,23 @@
 version: "3.7"
 
 services:
-  proxy-server1:
-    build: .
+  proxyclient1:
+    image: zippersk/ws-tunnel-proxy:client
     restart: unless-stopped
     environment:
-      SERVER_ADDR: http://host.docker.internal:8180
+      SERVER_ADDR: http://server.local:8087
       HOST: web1
       PORT: 80
-      SUBDOMAIN: web1
+      SUBDOMAIN: webservice1
 
-
-  proxy-serve2:
-    build: .
+  proxyclient2:
+    image: zippersk/ws-tunnel-proxy:client
     restart: unless-stopped
     environment:
-      SERVER_ADDR: http://host.docker.internal:8180
+      SERVER_ADDR: http://server.local:8087
       HOST: web2
       PORT: 80
-      SUBDOMAIN: web2
-
+      SUBDOMAIN: webservice2
 
   web1:
       image: strm/helloworld-http

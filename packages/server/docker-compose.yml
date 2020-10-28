@@ -1,8 +1,14 @@
 version: "3.7"
 
 services:
-  server:
+  proxy-server:
     build: .
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2.1.1-alpine
     restart: unless-stopped
     ports:
       - "8180:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile

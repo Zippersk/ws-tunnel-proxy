@@ -70,6 +70,6 @@ websocketServer.on("connection", socket => {
   });
 });
 
-server.listen(localport);
+server.listen(localport, "0.0.0.0");
 
 console.log(`Listening...`);
